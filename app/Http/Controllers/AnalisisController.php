@@ -7,8 +7,10 @@ use App\Area;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-use App\Http\Request\analisisStoreRequest;
-use App\Http\Request\analisisUpdateRequest;
+
+
+use App\Http\Requests\analisisStoreRequest;
+use App\Http\Requests\analisisUpdateRequest;
 
 class AnalisisController extends Controller
 {
@@ -23,8 +25,8 @@ class AnalisisController extends Controller
      */
     public function index()
     {
-        
-        $analisis= Analisis::orderBy('id','DESC')->paginate();
+
+        $analisis= Analisis::orderBy('id','ASC')->paginate();
         return view('analisis.index',compact('analisis'));
     }
 
@@ -34,8 +36,9 @@ class AnalisisController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('analisis.create');
+    {   
+        $areas=Area::orderBy('nombre','ASC')->pluck('nombre','id');
+        return view('analisis.create',compact('areas'));
     }
 
     /**
@@ -62,7 +65,8 @@ class AnalisisController extends Controller
     public function show($id)
     {
         $analisis= Analisis::find($id);
-        return view('analisis.show',compact('analisis'));
+        $areas=Area::orderBy('nombre','ASC')->pluck('nombre','id');
+        return view('analisis.show',compact('analisis','areas'));
     }
 
     /**
@@ -73,8 +77,9 @@ class AnalisisController extends Controller
      */
     public function edit($id)
     {
-        $analisis= Analisis::find($id);
-        return view('analisis.edit',compact('analisis'));
+        $analisi= Analisis::find($id);
+        $areas=Area::orderBy('nombre','ASC')->pluck('nombre','id');
+        return view('analisis.edit',compact('analisi','areas'));
     }
 
     /**
@@ -104,6 +109,6 @@ class AnalisisController extends Controller
     public function destroy(Request $request)
     {
         Analisis::find($id)->delete();
-        return view('analisis.index');
+        return back()->with('info', 'Eliminado correctamente');
     }
 }

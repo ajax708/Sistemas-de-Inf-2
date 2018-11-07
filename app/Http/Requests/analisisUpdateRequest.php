@@ -13,7 +13,7 @@ class analisisUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,10 +22,13 @@ class analisisUpdateRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+    {   
+        
         return [
-            'nombre'=>'required',
-            'clave'='required|unique:analisis,clave'.$this->clave,
+            'nombre'    =>  'required',
+            'clave'     =>  'required|unique:analisis,clave,'. $this->analisi,
+            'area_id'   =>  'required|integer',
+            'estado'    =>  'required',
         ];
     }
 }

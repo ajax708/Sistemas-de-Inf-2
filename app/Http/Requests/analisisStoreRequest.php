@@ -24,8 +24,10 @@ class analisisStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required',
-            'clave'='required|unique:analisis,clave',
+            'nombre'    =>  'required',
+            'clave'     =>   'required|unique:analisis,clave',
+            'area_id'   =>  'required|integer',
+            'estado'    =>  'required',
         ];
     }
 }

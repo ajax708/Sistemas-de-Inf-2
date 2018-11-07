@@ -24,7 +24,7 @@
 	                </div>
 	          	</div>
 	          	<div class="col-xs-6 col-md-4">
-	              	<a href="{{route(analisis.create)}}" class="btn btn-default btn-primary">Crear</a>
+	              	<a href="{{route('analisis.create')}}" class="btn btn-default btn-primary">Crear</a>
 	          	</div>
             </div>
             <!-- /.box-header -->
@@ -43,29 +43,36 @@
 	            <tbody>
 	            	@foreach($analisis as $analis)
 						<tr  role="row" class="odd" >
-						<td >{{ $analis->id }}</td>
-						
-						<td >{{ $analis->clave  }}</td>
+							<td >{{ $analis->id }}</td>
+							
+							<td >{{ $analis->clave  }}</td>
 
-						<td>{{ $analis->nombre }}</td>
+							<td>{{ $analis->nombre }}</td>
 
-						<td>{{ $analis->area->nombre }}</td>
-						
-						<td>Estado</td>
-
-						<td width="10px">
-							<a href="{{route('analisis.show',$analis->id)}}" 
-								class="btn btn-sm btn-default">Ver</a>
-						</td>
-						<td width="10px">
-							<a href="{{route('analisis.edit',$analis->id)}}" 
-								class="btn btn-sm btn-default">Editar</a>
-						</td>
-						<td width="10px">
-							<a href="#" 
-								class="btn btn-sm btn-default">Eliminar</a>
-						</td>
-					</tr>
+							<td>{{ $analis->area->nombre }}</td>
+							
+							@if($analis->estado==1)
+								<td><span class="label label-success">Activo</span></td>
+							@else
+								<td><span class="label label-danger">Inactivo</span></td>
+							@endif
+							
+							<td width="10px">
+								<a href="{{route('analisis.show',$analis->id)}}" 
+									class="btn btn-sm btn-success">Ver</a>
+							</td>
+							<td width="10px">
+								<a href="{{route('analisis.edit',$analis->id)}}" 
+									class="btn btn-sm btn-warning">Editar</a>
+							</td>
+							<td width="10px">
+								 {!! Form::open(['route' => ['analisis.destroy', $analis->id], 'method' => 'DELETE']) !!}
+                                        <button class="btn btn-sm btn-danger">
+                                            Eliminar
+                                        </button>                           
+                                 {!! Form::close() !!}
+							</td>
+						</tr>
 					@endforeach
                 </tbody>
               </table>

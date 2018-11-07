@@ -9,7 +9,7 @@ class Analisis extends Model
     //
 
     protected $fillable = [
-        'clave','nombre','area_id',
+        'clave','nombre','area_id','estado'
     ];
     protected $table ='analisis';
 
