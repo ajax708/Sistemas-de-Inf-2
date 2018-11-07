@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Analisis extends Model
 {
-    //
-
     protected $fillable = [
         'clave','nombre','area_id','estado'
     ];
@@ -22,5 +20,11 @@ class Analisis extends Model
     }
     public function lista_precio(){
     	return $this->belongsToMany('App\ListaPrecio', 'lista_precio_analisis', 'analisis_id', 'listaprecio_id')->withTimestamps()->withPivot('valor');
+    }
+    public function ordenes(){
+        return $this->belongsToMany('App\Orden', 'detalle_orden')->withTimestamps()->withPivot('precio_venta','estado');
+    }
+    public function parametros(){
+        return $this->hasMany('App\ParametroAnalisis','analisis_id');
     }
 }

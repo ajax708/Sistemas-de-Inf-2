@@ -24,5 +24,7 @@ class Orden extends Model
      public function seguro(){
     	return $this->belongsTo('App\Seguro');
     }
-     
+     public function analisis(){
+        return $this->belongsToMany('App\Analisis', 'detalle_orden')->withTimestamps()->withPivot('precio_venta','estado');
+    }
 }
