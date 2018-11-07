@@ -19,3 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resources([
+    'analisis' => 'AnalisisController',
+    //'posts' => 'PostController'
+]);

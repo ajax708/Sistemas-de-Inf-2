@@ -192,7 +192,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Listar Analisis',
-                    'url'  => '#',
+                    'route'  => 'analisis.index',
                     'icon'    => 'list-ul',
                 ],
             ],
