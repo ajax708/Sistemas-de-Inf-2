@@ -35,7 +35,12 @@ class ValorCualitativoAnalisisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $valor = ValorCualitativoAnalisis::create([
+            'valor'=> $request->valor,
+            'parametros_analisis_id' => $request->parametro
+        ]);
+        
+        return redirect()->route('paranalisis.index',['analisis' => $valor->parametro->analisis->id]);
     }
 
     /**

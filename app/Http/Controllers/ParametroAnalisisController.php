@@ -20,7 +20,7 @@ class ParametroAnalisisController extends Controller
         $parametros = ParametroAnalisis::where('analisis_id',$analisis->id)->get();
         $unidades = UnidadMedida::all();
         //$enums = Herramientas::getEnumValues('parametros_analisis','tipo') ;
-         return view("parametroanalisis.index")->with(["parametros" => $parametros, "analisis"=>$analisis,"unidades" =>$unidades]);
+         return view("paranalisis.index")->with(["parametros" => $parametros, "analisis"=>$analisis,"unidades" =>$unidades]);
     }
 
     /**
@@ -43,7 +43,7 @@ class ParametroAnalisisController extends Controller
     {
        // Analisis $analisis = $request->analisis_id;
         $parametro = ParametroAnalisis::create($request->only('nombre','tipo','cant_resultados','unidad_medida_id','analisis_id'));
-        return redirect()->route('parametroanalisis.index',['analisis'=>$request->analisis_id]);
+        return redirect()->route('paranalisis.index',['analisis'=>$request->analisis_id]);
     }
 
     /**
@@ -86,8 +86,10 @@ class ParametroAnalisisController extends Controller
      * @param  \App\ParametroAnalisis  $parametroAnalisis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ParametroAnalisis $parametroAnalisis)
+    public function destroy(ParametroAnalisis $parametro)
     {
-        //
+        $analisis = $parametro->analisis->id;
+        $parametro->delete();
+        return redirect()->route('paranalisis.index',['analisis'=>$analisis]);
     }
 }

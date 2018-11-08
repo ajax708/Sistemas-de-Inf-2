@@ -56,7 +56,7 @@
 									class="btn btn-sm btn-success" title="Ver"><i class="fas fa-eye"></i></a>
 							</td>
 							<td width="5px">
-								<a href="{{route('analisis.edit',$analis->id)}}" 
+								<a href="{{route('paranalisis.index',$analis->id)}}" 
 									class="btn btn-sm btn-primary" title="Parametrizar"><i class="fas fa-cog"></i></a>
 							</td>
 							<td width="5px">

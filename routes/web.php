@@ -23,3 +23,18 @@ Route::resources([
     'analisis' => 'AnalisisController',
     //'posts' => 'PostController'
 ]);
+
+//parametro analisis
+Route::get('paranalisis/{analisis}', 'ParametroAnalisisController@index')->name('paranalisis.index');
+Route::resource('paranalisis', 'ParametroAnalisisController')->parameters([
+    'paranalisis' => 'parametro'
+])->except(['index']);
+
+//cuali analisis
+Route::resource('cualitativoanalisis', 'ValorCualitativoAnalisisController')->parameters([
+	'cualitativoanalisis' =>'cualitativo'
+])->except(['index','show','create']);
+
+Route::resource('cuantitativoanalisis', 'ValorCuantitativoAnalisisController')->parameters([
+	'cuantitativoanalisis' =>'cuantitativo'
+])->except(['index','show','create']);
