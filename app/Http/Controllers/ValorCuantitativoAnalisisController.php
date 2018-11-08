@@ -35,7 +35,9 @@ class ValorCuantitativoAnalisisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cuantitativo = ValorCuantitativoAnalisis::create($request->only('rango_inicial','rango_final','descripcion','parametros_analisis_id'));
+
+        return redirect()->route('paranalisis.index',['analisis' => $cuantitativo->parametro->analisis->id]);
     }
 
     /**
@@ -67,9 +69,9 @@ class ValorCuantitativoAnalisisController extends Controller
      * @param  \App\ValorCuantitativoAnalisis  $valorCuantitativoAnalisis
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ValorCuantitativoAnalisis $valorCuantitativoAnalisis)
+    public function update(Request $request, ValorCuantitativoAnalisis $cuantitativo)
     {
-        //
+        
     }
 
     /**

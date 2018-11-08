@@ -87,7 +87,7 @@ input[type=number]::-webkit-outer-spin-button {
 				                		<td>{{$parametro->unidadDeMedida->nombre}}</td>
 				                		<td>
 				                			@foreach($parametro->cuantitativos as $cuantitativo)
-				                			<button type="button" class="btn  btn-default btn-xs" onclick="add_valores({{$cuantitativo->id}})" >{{$cuantitativo->rango_inicial}} - {{$cuantitativo->rango_final}}<i class="fas fa-pencil-alt"></i></button>
+				                			<button type="button" class="btn  btn-default btn-xs" onclick="add_valores({{$cuantitativo->id}})" >{{$cuantitativo->rango_inicial}} - {{$cuantitativo->rango_final}} <i class="fas fa-pencil-alt"></i></button>
 				                			@endforeach
 				                			<button type="button" class="btn  btn-success btn-xs" data-toggle="modal" data-target="#cuantitativoModal" data-parametro={{ $parametro->id }}><i class="fas fa-plus"></i></button>
 				                		</td>
@@ -100,7 +100,7 @@ input[type=number]::-webkit-outer-spin-button {
 				                			<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#cualitativoModal" data-parametro={{ $parametro->id }}><i class="fas fa-plus"></i></button>
 				                		</td>
 				                		<td>
-				                			<button type="button" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> </button>
+				                			<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal" data-parametro="{{$parametro->id}}"><i class="fas fa-pencil-alt"></i> </button>
 				                			{!! Form::open(['route' => ['paranalisis.destroy', $parametro->id], 'method' => 'DELETE', 'class'=>'inline']) !!}
                                        			 <button class="btn btn-sm btn-danger" title="Borrar"><i class="fas fa-trash-alt"></i>
                                         		</button>                           
