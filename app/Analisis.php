@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Analisis extends Model
 {
     protected $fillable = [
-        'clave','nombre','area_id','estado'
+        'clave','nombre','clasificacion_id','area_id','tipo','estado'
     ];
     protected $table ='analisis';
 

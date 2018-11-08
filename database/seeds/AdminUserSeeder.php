@@ -25,8 +25,9 @@ class AdminUserSeeder extends Seeder
         } catch (\Illuminate\Database\QueryException $exception) {
         }
 
-        factory(App\User::class,20)->create()
+        factory(App\User::class,12)->create()
             ->each(function($user){
+                $user->persona()->save(factory(App\Persona::class)->make());
         });
     }
 }

@@ -11,6 +11,6 @@ class MedicoSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Medico::class,5)->create();
+        factory(App\Medico::class,3)->create();
     }
 }

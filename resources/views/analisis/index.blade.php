@@ -16,7 +16,7 @@
 	        
 	          	<div class="box-tools pull-right" >
 	                
-	             	<a href="{{route('analisis.create')}}" class="btn btn-primary btn-sm">Nuevo</a>
+	             	<a href="{{route('analisis.create')}}" class="btn btn-primary btn-sm" title="Crear nuevo parametro">Nuevo</a>
 	                
 	          	</div>
 	          	
@@ -30,7 +30,7 @@
 	                  <th>Clave</th>
 	                  <th>Nombre</th>
 	                  <th>Area</th>
-	                  <th>Status</th>
+	                  <th>Estado</th>
 	                  <th colspan="3">&nbsp;</th>
 	                </tr>
 	            </thead>
@@ -51,18 +51,22 @@
 								<td><span class="label label-danger">Inactivo</span></td>
 							@endif
 							
-							<td width="10px">
+							<td width="5px">
 								<a href="{{route('analisis.show',$analis->id)}}" 
-									class="btn btn-sm btn-success">Ver</a>
+									class="btn btn-sm btn-success" title="Ver"><i class="fas fa-eye"></i></a>
 							</td>
-							<td width="10px">
+							<td width="5px">
 								<a href="{{route('analisis.edit',$analis->id)}}" 
-									class="btn btn-sm btn-warning">Editar</a>
+									class="btn btn-sm btn-primary" title="Parametrizar"><i class="fas fa-cog"></i></a>
 							</td>
-							<td width="10px">
+							<td width="5px">
+								<a href="{{route('analisis.edit',$analis->id)}}" 
+									class="btn btn-sm btn-warning" title="Editar"><i class="fas fa-edit"></i></a>
+							</td>
+							<td width="5px">
 								 {!! Form::open(['route' => ['analisis.destroy', $analis->id], 'method' => 'DELETE']) !!}
-                                        <button class="btn btn-sm btn-danger">
-                                            Eliminar
+                                        <button class="btn btn-sm btn-danger" title="Borrar">
+                                            <i class="fas fa-trash-alt"></i>
                                         </button>                           
                                  {!! Form::close() !!}
 							</td>
