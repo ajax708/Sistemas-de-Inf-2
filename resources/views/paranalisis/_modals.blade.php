@@ -49,7 +49,7 @@
                       </div>
                       <div class="form-group">
                         <label for="descripcion">Descripcion: </label>
-                        <textarea class="form-control" id="descripcion" name="descripcion" ></textarea> 
+                        <textarea class="form-control" id="descripcion" name="descripcion" required ></textarea> 
                       </div>
                       <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
@@ -70,10 +70,8 @@
                        <form id="editForm" action="" method="POST" class="form" role="form">
                       @csrf
                       @method('PUT')
-                      <div class="form-group">
-                        <label for="id">ID</label>
-                        <input type="text" id='id' name='id' value="">
-                      </div>
+                      <input type="hidden" name="analisis" id="analisis" value="">
+
                       <div class="form-group">
                         <label for="nombre">Nombre: </label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required="true" >
@@ -82,13 +80,12 @@
                         <label for="cant_resultados"># Resultado: </label>
                         <input type="number" class="form-control" id="cant_resultados" name="cant_resultados" required="true">
                       </div>
-                      <div class="form-group">
-                        <label for="tipo">Tipo: </label>
-                        <select class="form-control" id="tipo" name="tipo" ></select>
+                      <div class="form-group ">
+                        {!! Form::select('tipo', ['01'=>'01','02'=>'02','03'=>'03'], '01', ['id'=>'tipo','placeholder' => 'Tipo', 'class'=>'form-control', 'required'=>'true']) !!}
                       </div>
-                      <div class="form-control">
-                        <label for="unidad_medida_id">Unidad: </label>
-                        <select class="form-control" id="unidad_medida_id" name="unidad_medida_id"></select>
+                      <div class="form-group ">
+                        {!! Form::select('unidad_medida_id', $unidades->pluck('nombre','id'), $unidades->first()->id,['id'=>'unidad_medida_id','placeholder' => 'Unidad', 'class'=>'form-control', 'required'=>'true']) !!}
+            
                       </div>
                       <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>

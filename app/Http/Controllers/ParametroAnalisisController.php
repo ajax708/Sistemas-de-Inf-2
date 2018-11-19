@@ -75,9 +75,11 @@ class ParametroAnalisisController extends Controller
      * @param  \App\ParametroAnalisis  $parametroAnalisis
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ParametroAnalisis $parametroAnalisis)
+    public function update(Request $request, ParametroAnalisis $parametro)
     {
-        //
+        $parametro->update($request->only('nombre','tipo','cant_resultados','unidad_medida_id'));
+        $analisis = $request->analisis;
+        return redirect()->route('paranalisis.index',['analisis'=>$analisis]);
     }
 
     /**
