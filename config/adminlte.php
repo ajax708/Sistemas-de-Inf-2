@@ -187,12 +187,17 @@ return [
     'menu' => [
         'CASOS DE USO',
         [
-            'text'    => 'ANALISIS',
+            'text'    => 'PARAMETRIZACION',
             'icon'    => 'vials',
             'submenu' => [
                 [
-                    'text' => 'Listar Analisis',
+                    'text' => 'Parametros de Analisis',
                     'route'  => 'analisis.index',
+                    'icon'    => 'list-ul',
+                ],
+                [
+                    'text' => 'Parametros de Muestras',
+                    
                     'icon'    => 'list-ul',
                 ],
             ],

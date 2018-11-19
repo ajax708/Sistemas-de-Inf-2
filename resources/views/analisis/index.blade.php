@@ -2,7 +2,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-	<h1 align="center">Gestion de Analisis</h1>
+	<h1 align="center">Parametros de Analisis</h1>
 @stop
 
 @section('content')
@@ -31,7 +31,7 @@
 	                  <th>Nombre</th>
 	                  <th>Area</th>
 	                  <th>Estado</th>
-	                  <th colspan="3">&nbsp;</th>
+	                  <th colspan="4">&nbsp;</th>
 	                </tr>
 	            </thead>
 	            <tbody>
@@ -50,15 +50,15 @@
 							@else
 								<td><span class="label label-danger">Inactivo</span></td>
 							@endif
-							
+							<td width="5px">
+								<a href="{{route('paranalisis.index',$analis->id)}}" 
+									class="btn btn-sm btn-primary" title="Parametrizar"><i class="fas fa-cog"></i> Parametrizar</a>
+							</td>
 							<td width="5px">
 								<a href="{{route('analisis.show',$analis->id)}}" 
 									class="btn btn-sm btn-success" title="Ver"><i class="fas fa-eye"></i></a>
 							</td>
-							<td width="5px">
-								<a href="{{route('paranalisis.index',$analis->id)}}" 
-									class="btn btn-sm btn-primary" title="Parametrizar"><i class="fas fa-cog"></i></a>
-							</td>
+							
 							<td width="5px">
 								<a href="{{route('analisis.edit',$analis->id)}}" 
 									class="btn btn-sm btn-warning" title="Editar"><i class="fas fa-edit"></i></a>

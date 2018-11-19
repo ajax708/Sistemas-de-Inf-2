@@ -57,6 +57,40 @@
             </div>
         </div>
     </div>
+    <!--cuantitativo edit -->
+     <div id="cuantitativoEdit" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Editar Cuantitativo</h4>
+                </div>
+                <div class="modal-body">
+                  
+                       <form action="" method="POST" class="form" role="form">
+                      @csrf
+                      @method('PUT')
+                      <div class="form-group">
+                        <input type="hidden" id='parametro' name="parametros_analisis_id" value="">
+                      </div>
+                      <div class="form-group">
+                        <label for="rango_inicial">Desde: </label>
+                        <input type="number" class="form-control" id="rango_inicial" name="rango_inicial" required="true" >
+                      </div>
+                      <div class="form-group">
+                        <label for="rango_final">Hasta: </label>
+                        <input type="number" class="form-control" id="rango_final" name="rango_final" required="true" >
+                      </div>
+                      <div class="form-group">
+                        <label for="descripcion">Descripcion: </label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" required ></textarea> 
+                      </div>
+                      <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
   {{-- Edit Modal --}}
    <div id="editModal" class="modal fade" role="dialog">
