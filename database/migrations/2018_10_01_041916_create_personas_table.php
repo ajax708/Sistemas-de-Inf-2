@@ -17,13 +17,13 @@ class CreatePersonasTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
-            $table->string('nombre')->nullable($value = false);
-            $table->string('apellido')->nullable($value = false);
-            $table->string('ci')->unique()->nullable($value = false);
-            $table->enum('genero',['01','02']);
+            $table->string('nombre')->nullable();
+            $table->string('apellido')->nullable();
+            $table->string('ci')->unique()->nullable();
+            $table->enum('genero',['01','02'])->nullable();
             $table->string('email');
-            $table->string('telefono');
-            $table->string('celular');
+            $table->string('telefono')->nullable();
+            $table->string('celular')->nullable();
             $table->timestamps();
         });
     }
