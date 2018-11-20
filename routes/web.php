@@ -38,3 +38,7 @@ Route::resource('cualitativoanalisis', 'ValorCualitativoAnalisisController')->pa
 Route::resource('cuantitativoanalisis', 'ValorCuantitativoAnalisisController')->parameters([
 	'cuantitativoanalisis' =>'cuantitativo'
 ])->except(['index','show','create']);
+
+//ordenes
+Route::resource('orden', 'OrdenController')->parameters([
+'orden'=>'orden']);

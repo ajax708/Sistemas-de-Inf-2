@@ -187,6 +187,17 @@ return [
     'menu' => [
         'CASOS DE USO',
         [
+            'text'    => 'ANALISIS',
+            'icon'    => 'vials',
+            'submenu' => [
+                [                                                                   
+                    'text' => 'Ordenes de analisis',
+                    'route' => 'orden.index',
+                    'icon'    => 'list-ul',
+                ],
+            ],
+        ],
+        [
             'text'    => 'PARAMETRIZACION',
             'icon'    => 'vials',
             'submenu' => [
