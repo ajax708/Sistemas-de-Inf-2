@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Persona;
 use Illuminate\Support\Facades\Validator;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
@@ -37,8 +38,7 @@ public function form_nuevo_permiso(){
 
 public function listado_usuarios(){
     //presenta un listado de usuarios paginados de 100 en 100
-	$usuarios=User::paginate(100);
-  
+  $usuarios=User::paginate(100);
 	return view("listados.listado_usuarios")->with("usuarios",$usuarios);
 }
 
@@ -49,31 +49,39 @@ public function listado_usuarios(){
 public function crear_usuario(Request $request){
     //crea un nuevo usuario en el sistema
 
-	$reglas=[  'password' => 'required|min:8',
+	$reglas=[  'password' => 'required|min:6',
 	             'email' => 'required|email|unique:users', ];
 	 
 	$mensajes=[  'password.min' => 'El password debe tener al menos 8 caracteres',
 	             'email.unique' => 'El email ya se encuentra registrado en la base de datos', ];
 	  
 	$validator = Validator::make( $request->all(),$reglas,$mensajes );
+
 	if( $validator->fails() ){ 
 	  	return view("mensajes.mensaje_error")->with("msj","...Existen errores...")
 	  	                                    ->withErrors($validator->errors());         
 	}
 
 	$usuario=new User;
+  $persona=new Persona;
 	$usuario->name=strtoupper( $request->input("nombres")." ".$request->input("apellidos") ) ;
-	$usuario->nombres=strtoupper( $request->input("nombres") ) ;
-    $usuario->apellidos=strtoupper( $request->input("apellidos") ) ;
-	$usuario->telefono=$request->input("telefono");
 	$usuario->email=$request->input("email");
 	$usuario->password= bcrypt( $request->input("password") ); 
  
-            
+  
+
     if($usuario->save())
     {
-
-  
+      
+      $persona->user_id   = strtoupper( $usuario->id ) ;
+      $persona->nombre    = strtoupper( $request->input("nombres") ) ;
+      $persona->apellido  = strtoupper( $request->input("apellidos") ) ;
+      //$persona->ci        =
+      //$persona->genero    =
+      $persona->email     = $request->input("email");
+      $persona->telefono  = $request->input("telefono");
+      //$persona->celular   =
+      $persona->save();
       return view("mensajes.msj_usuario_creado")->with("msj","Usuario agregado correctamente") ;
     }
     else
@@ -149,26 +157,34 @@ public function asignar_permiso(Request $request){
 
 public function form_editar_usuario($id){
     $usuario=User::find($id);
+
     $roles=Role::all();
+    $persona=Persona::where('user_id',$id)->first();
     return view("formularios.form_editar_usuario")->with("usuario",$usuario)
-	                                              ->with("roles",$roles);                                 
+	                                              ->with("roles",$roles)
+                                                ->with("persona",$persona);                                 
 }
 
 public function editar_usuario(Request $request){
           
     $idusuario=$request->input("id_usuario");
     $usuario=User::find($idusuario);
-    $usuario->name=strtoupper( $request->input("nombres") ) ;
-    $usuario->apellidos=strtoupper( $request->input("apellidos") ) ;
-    $usuario->telefono=$request->input("telefono");
+    $persona=Persona::where('user_id',$idusuario)->get();
     
+    $usuario->name=strtoupper( $request->input("nombres")." ".$request->input("apellidos") ) ;
+
+    $persona[0]->nombre=strtoupper( $request->input("nombres") ) ;
+    $persona[0]->apellido=strtoupper( $request->input("apellidos") ) ;
+    $persona[0]->telefono=$request->input("telefono");
+    
+
      if($request->has("rol")){
 	    $rol=$request->input("rol");
 	    $usuario->revokeAllRoles();
 	    $usuario->assignRole($rol);
      }
-	 
-    if( $usuario->save()){
+	   
+    if($usuario->save() && $persona[0]->save()){
 		return view("mensajes.msj_usuario_actualizado")->with("msj","Usuario actualizado correctamente")
 	                                                   ->with("idusuario",$idusuario) ;
     }

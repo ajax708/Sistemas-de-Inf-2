@@ -213,6 +213,18 @@ return [
                 ],
             ],
         ],
+        [
+            
+            'text'    => 'USUARIOS',
+            'icon'    => 'users',
+            'submenu' => [
+                [
+                    'text' => 'Listado Usuarios',
+                    'url'  => 'listado_usuarios',
+                    'icon'    => 'user',
+                ],
+            ],
+        ],
     ],
 
     /*
