@@ -8,5 +8,10 @@
 @stop
 
 @section('content')
-    <p>You are logged in!</p>
+<h1>Listado de Analisis</h1>
+    @foreach ($orden->analisis as $analisis)
+    	<h3>{{ $analisis->clave }}</h3>
+    	<p>{{$analisis->nombre}}</p>
+    	<p>--------------------------</p>
+    @endforeach
 @stop

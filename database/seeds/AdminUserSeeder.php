@@ -23,13 +23,13 @@ class AdminUserSeeder extends Seeder
                     });
         } catch (\Illuminate\Database\QueryException $exception) {
         }
-         App\Empleado::create([
-                                'id' => $persona->id,
-                                'cod_empleado' => '123456789',
-                                'telefono_laboral' => '69004910',
-                                'antiguedad' => date("dd/mm/yyyy"),
-                                'estado' => '01'
-                           ]);
+         // App\Empleado::create([
+         //                        'id' => $persona->id,
+         //                        'cod_empleado' => '123456789',
+         //                        'telefono_laboral' => '69004910',
+         //                        'antiguedad' => date("dd/mm/yyyy"),
+         //                        'estado' => '01'
+         //                   ]);
         factory(App\User::class,12)->create()
             ->each(function($user){
                 $user->persona()->save(factory(App\Persona::class)->make());
