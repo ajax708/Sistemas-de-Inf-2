@@ -69,6 +69,6 @@ Route::resource('cuantitativoanalisis', 'ValorCuantitativoAnalisisController')->
 //ordenes
 Route::resource('orden', 'OrdenController')->parameters([
 'orden'=>'orden']);
-
-
+//detalle
+Route::get('detalleorden/{orden}', 'DetalleOrdenController@index')->name('detalleorden.index');
 

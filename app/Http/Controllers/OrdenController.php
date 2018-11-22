@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Orden;
+use App\DetalleOrden;
 use Illuminate\Http\Request;
 
 class OrdenController extends Controller
@@ -36,7 +37,16 @@ class OrdenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $orden = Orden::create($request->only('nro_orden','fecha_ingreso','fecha_egreso','paciente_id','medico_id','empleado_id'));
+        $analisis = $request->input('analisis');
+        foreach ($analisis as $value) {
+            DetalleOrden::create([
+                'orden_id' => $orden->id,
+                'analisis_id' => $value,
+                'estado' => '01'
+            ]);
+        }
+        return redirect()->route('orden.index')->with(['ordenes'=>Orden::all()]);
     }
 
     /**

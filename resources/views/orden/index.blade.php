@@ -14,7 +14,7 @@
     				<h3 class="box-title">Ordenes de analisis</h3>
     			</div>
     			<div class="box-body">
-    				 	<table id="myTable" class="table table-condensed table-hover">
+    				 	<table id="myTable" class="table table-condensed table-hover ">
     				 		<thead>
     				 			<tr>
     				 				<th>Nro. Orden</th>
@@ -23,6 +23,7 @@
     				 				<th>Ingreso</th>
     				 				<th>Egreso</th>
     				 				<th>Total</th>
+                                    <th>Opciones</th>
     				 			</tr>
     				 		</thead>
     				 		<tbody>
@@ -34,8 +35,9 @@
     				 					<td>{{ $orden->fecha_ingreso }}</td>
     				 					<td>{{ $orden->fecha_egreso }}</td>
     				 					<td>{{ $orden->total }}</td>
+                                        <td><a href="{{ route('detalleorden.index',['orden' => $orden->id]) }}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Analisis</button></a></td>
     				 				</tr>
-    				 			@endforeach
+    				 		     @endforeach
     				 		</tbody>
     				 	</table>
     			</div>
