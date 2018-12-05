@@ -4,7 +4,7 @@
 @section('css')
 <style >
 	input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
+	input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
@@ -100,7 +100,14 @@ input[type=number]::-webkit-outer-spin-button {
 				                			<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#cualitativoModal" data-parametro={{ $parametro->id }}><i class="fas fa-plus"></i></button>
 				                		</td>
 				                		<td>
-				                			<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal" data-action='{{ route('paranalisis.update',['parametro'=>$parametro->id]) }}' data-analisis="{{$analisis->id}}" data-nombre="{{ $parametro->nombre}}" data-res="{{ $parametro->cant_resultados}}" data-tipo="{{ $parametro->tipo }}" data-uni='{{ $parametro->unidad_medida_id }}'><i class="fas fa-pencil-alt"></i> </button>
+				                			
+				                			<button type="button" 
+					                			class="btn btn-primary btn-sm" data-toggle="modal" 
+					                			data-target="#editModal" 
+					                			data-action='{{ route('paranalisis.update',['parametro'=>$parametro->id]) }}' data-analisis="{{$analisis->id}}" data-nombre="{{ $parametro->nombre}}" data-res="{{ $parametro->cant_resultados}}" data-tipo="{{ $parametro->tipo }}" data-uni='{{ $parametro->unidad_medida_id }}'>
+					                			<i class="fas fa-pencil-alt"></i> 
+					                		</button>
+				                			
 				                			{!! Form::open(['route' => ['paranalisis.destroy', $parametro->id], 'method' => 'DELETE', 'class'=>'inline']) !!}
                                        			 <button class="btn btn-sm btn-danger" title="Borrar"><i class="fas fa-trash-alt"></i>
                                         		</button>                           
