@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Resultado;
+use App\Analisis;
+use App\ParametroAnalisis;
 use Illuminate\Http\Request;
 
 class ResultadoController extends Controller
@@ -12,9 +14,16 @@ class ResultadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+        $analisis= Analisis::orderBy('id','ASC')->paginate();
+        $parametros= ParametroAnalisis::orderBy('id','ASC')->paginate();
+        //$resultado=Resultado::orderBy('id','ASC')->paginate();
+        return view('resultado.index',compact('analisis','parametros'));
     }
 
     /**

@@ -11,10 +11,14 @@
     	<div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
     		<div class="box box-solid box-success">
     			<div class="box-header">
-    				<h3 class="box-title"> </h3>
+    				<h3 class="box-title">Crear Nueva Orden de Analisis</h3>
     			</div>
     			<div class="box-body">
-    				
+    				{!! Form::open(['route' => 'orden.store']) !!}
+                            
+                            @include('orden.partials.form')
+
+                    {!! Form::close() !!}
     			</div>
     		</div>
     	</div>
