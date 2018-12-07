@@ -46,10 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resources([
-    'analisis'  => 'AnalisisController',
-    'resultado' => 'ResultadoController',
-    'persona'   => 'PersonaController',
-    'paciente'  => 'PacienteController',
+    'analisis' => 'AnalisisController',
+    //'posts' => 'PostController'
 ]);
 
 //parametro analisis
@@ -74,13 +72,3 @@ Route::resource('orden', 'OrdenController')->parameters([
 
 
 
-Route::group(['prefix' => 'orden'], function()
-{
-    # /public/catalogo/
-    Route::group(['prefix' => 'analisis'], function()
-    {
-        # /catalogo/sub_categoria/
-        Route::resource('parametro', 'ParametroAnalisisController');
-
-    });
-});

@@ -6,13 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Paciente extends Model
 {
-	protected $fillable = [
-        'user_id','fecha_nacimiento','estado_civil','genero'
-    ];
     //
-    public function user()
+     public function persona()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Persona','id');
     }
     public function seguros()
     {

@@ -20,7 +20,7 @@ class CreatePersonasTable extends Migration
             $table->string('nombre')->nullable();
             $table->string('apellido')->nullable();
             $table->string('ci')->unique()->nullable();
-            $table->enum('tipo',['01','02'])->nullable();
+            $table->enum('genero',['01','02'])->nullable();
             $table->string('email');
             $table->string('telefono')->nullable();
             $table->string('celular')->nullable();

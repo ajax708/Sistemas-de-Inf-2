@@ -195,11 +195,6 @@ return [
                     'route' => 'orden.index',
                     'icon'    => 'list-ul',
                 ],
-                [                                                                   
-                    'text' => 'Resultados de Analisis',
-                    'route' => 'resultado.index',
-                    'icon'    => 'list-ul',
-                ],
             ],
         ],
         [
@@ -226,16 +221,6 @@ return [
                 [
                     'text' => 'Listado Usuarios',
                     'url'  => 'listado_usuarios',
-                    'icon'    => 'user',
-                ],
-                [
-                    'text' => 'Listado Personal Medico',
-                    'route'  => 'persona.index',
-                    'icon'    => 'user-md',
-                ],
-                 [
-                    'text' => 'Registro de Pacientes',
-                    'route'  => 'paciente.index',
                     'icon'    => 'user',
                 ],
             ],

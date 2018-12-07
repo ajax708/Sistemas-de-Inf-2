@@ -42,7 +42,7 @@
 							<td >{{ $analis->clave  }}</td>
 
 							<td>{{ $analis->nombre }}</td>
-							
+
 							<td>{{ $analis->area->nombre }}</td>
 							
 							@if($analis->estado==1)
