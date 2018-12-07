@@ -72,3 +72,4 @@ Route::resource('orden', 'OrdenController')->parameters([
 //detalle
 Route::get('detalleorden/{orden}', 'DetalleOrdenController@index')->name('detalleorden.index');
 
+//reporte
