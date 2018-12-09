@@ -8,6 +8,8 @@ class Orden extends Model
 {
     //
     protected $table = 'ordenes';
+ //   protected $fillable = ['nro_orden','fecha_ingreso','fecha_egreso',''];
+    protected $guarded = ['id','_token'];
 
      public function paciente(){
     	return $this->belongsTo('App\Paciente');

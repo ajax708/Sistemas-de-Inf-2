@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Orden;
-use App\DetalleOrden;
+use App\Resultado;
 use Illuminate\Http\Request;
 
-class OrdenController extends Controller
+class ResultadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class OrdenController extends Controller
      */
     public function index()
     {
-        $ordenes = Orden::all();
-        return view('orden.index',['ordenes'=>$ordenes]);
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class OrdenController extends Controller
      */
     public function create()
     {
-         return view('orden.create');
+        //
     }
 
     /**
@@ -37,25 +35,16 @@ class OrdenController extends Controller
      */
     public function store(Request $request)
     {
-        $orden = Orden::create($request->only('nro_orden','fecha_ingreso','fecha_egreso','paciente_id','medico_id','empleado_id'));
-        $analisis = $request->input('analisis');
-        foreach ($analisis as $value) {
-            DetalleOrden::create([
-                'orden_id' => $orden->id,
-                'analisis_id' => $value,
-                'estado' => '01'
-            ]);
-        }
-        return redirect()->route('orden.index')->with(['ordenes'=>Orden::all()]);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Orden  $orden
+     * @param  \App\Resultado  $resultado
      * @return \Illuminate\Http\Response
      */
-    public function show(Orden $orden)
+    public function show(Resultado $resultado)
     {
         //
     }
@@ -63,10 +52,10 @@ class OrdenController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Orden  $orden
+     * @param  \App\Resultado  $resultado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Orden $orden)
+    public function edit(Resultado $resultado)
     {
         //
     }
@@ -75,10 +64,10 @@ class OrdenController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Orden  $orden
+     * @param  \App\Resultado  $resultado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Orden $orden)
+    public function update(Request $request, Resultado $resultado)
     {
         //
     }
@@ -86,10 +75,10 @@ class OrdenController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Orden  $orden
+     * @param  \App\Resultado  $resultado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Orden $orden)
+    public function destroy(Resultado $resultado)
     {
         //
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DetalleOrden;
+use App\Orden;
 use Illuminate\Http\Request;
 
 class DetalleOrdenController extends Controller
@@ -12,9 +13,9 @@ class DetalleOrdenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Orden $orden)
     {
-        //
+        return view('detalleorden.index',['orden'=> $orden]);
     }
 
     /**
