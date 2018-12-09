@@ -233,6 +233,11 @@ return [
                     'route'  => 'paciente.index',
                     'icon'    => 'user',
                 ],
+                [
+                    'text' => 'Registro Empleados',
+                    'route'  => 'empleado.index',
+                    'icon'    => 'user',
+                ],
             ],
         ],
     ],

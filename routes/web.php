@@ -49,6 +49,7 @@ Route::resources([
     'analisis' => 'AnalisisController',
     'medico' => 'MedicoController',
     'paciente' => 'PacienteController',
+    'empleado' => 'EmpleadoController',
     //'posts' => 'PostController',
 ]);
 

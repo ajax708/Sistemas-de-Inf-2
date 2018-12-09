@@ -31,7 +31,7 @@ class MedicoStoreRequest extends FormRequest
             'nombre'    =>  'required',
             'apellido'  =>  'required',
             'password'  =>  'required|min:6',
-            'ci'    => 'required',
+            'ci'    => 'required|unique:personas,ci',
             'genero'  =>  'required',
             'telefono'=>  'required',
             'celular'=>  'required',

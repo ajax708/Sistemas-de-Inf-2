@@ -45,8 +45,14 @@ class PacienteController extends Controller
     public function store(PacienteStoreRequest $request)
     {
         $name= $request->input("nombre")." ".$request->input("apellido");
-        $request->merge(['name' => $name]);
-        $usuario=User::create($request->all());
+        
+        $usuario=User::create(
+            [
+                'name'=>$name,
+                'email'=>$request->input("email"),
+                'password'=>bcrypt($request->input("password"))
+            ]
+        );
         
         if($usuario->save())
         {
@@ -55,14 +61,11 @@ class PacienteController extends Controller
             
             $persona= Persona::create($request->all());
             $request->merge(['id' => $persona->id]);
-            $request->merge(['cod_paciente' => $persona->id]);
-            $date = Carbon::now();
-            $request->merge(['ultima_solicitud' => $date]);
 
-            $paciente= Paciente::create($request->all());
+            $empleado= Empleado::create($request->all());
 
-            return redirect()->route('paciente.index',$paciente->id)
-            ->with('info','Paciente registrado con exito');
+            return redirect()->route('empleado.index',$empleado->id)
+            ->with('info','empleado registrado con exito');
         } 
         else
         {

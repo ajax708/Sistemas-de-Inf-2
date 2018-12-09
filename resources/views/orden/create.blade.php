@@ -23,7 +23,7 @@ input[type=number type=date]::-webkit-outer-spin-button {
     	<div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
     		<form action="{{ route('orden.store') }}" method="POST" class="form-horizontal" role="form">
     			@csrf
-    			<input type="hidden" name="empleado_id" value="{{Auth::user()->persona->id}}">
+    			<input type="hidden" name="empleado_id" value="{{ Auth::user()->persona->id }}">
     		<div class="box box-solid bg-light-blue-gradient">
     			<div class="box-header">
     				<i class="fas fa-table"></i>

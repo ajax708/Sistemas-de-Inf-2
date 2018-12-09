@@ -46,8 +46,14 @@ class MedicoController extends Controller
     public function store(MedicoStoreRequest $request)
     {
         $name= $request->input("nombre")." ".$request->input("apellido");
-        $request->merge(['name' => $name]);
-        $usuario=User::create($request->all());
+        
+        $usuario=User::create(
+            [
+                'name'=>$name,
+                'email'=>$request->input("email"),
+                'password'=>bcrypt($request->input("password"))
+            ]
+        );
         
         if($usuario->save())
         {
@@ -106,7 +112,11 @@ class MedicoController extends Controller
         $persona= Persona::find($id);
         $user= User::find($persona->user_id);
         //Validar
-        $user->fill($request->all())->save();
+        $user->name=$request->input("name");
+        $user->email=$request->input("email");
+        $user->password= bcrypt( $request->input("password") ); 
+        
+
         $persona->fill($request->all())->save();
         
         $request->merge(['id' => $persona->id]);
@@ -123,9 +133,12 @@ class MedicoController extends Controller
      * @param  \App\Medico  $medico
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Medico $medico)
+    public function destroy($id)
     {
         Medico::find($id)->delete();
+        $persona=Persona::find($id);
+        $persona->delete();
+        User::find($persona->user_id)->delete();
         return back()->with('info', 'Eliminado correctamente');
     }
 }
