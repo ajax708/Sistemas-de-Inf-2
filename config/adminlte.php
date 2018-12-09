@@ -212,6 +212,16 @@ return [
                     'url'  => 'listado_usuarios',
                     'icon'    => 'user',
                 ],
+                [
+                    'text' => 'Registro Personal Medico',
+                    'route'  => 'medico.index',
+                    'icon'    => 'user',
+                ],
+                [
+                    'text' => 'Registro Pacientes',
+                    'route'  => 'paciente.index',
+                    'icon'    => 'user',
+                ],
             ],
         ],
     ],

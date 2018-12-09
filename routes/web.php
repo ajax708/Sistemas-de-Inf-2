@@ -21,7 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resources([
     'analisis' => 'AnalisisController',
-    //'posts' => 'PostController'
+    'medico' => 'MedicoController',
+    'paciente' => 'PacienteController',
+    //'posts' => 'PostController',
 ]);
 
 //parametro analisis
