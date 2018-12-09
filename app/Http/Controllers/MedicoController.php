@@ -113,7 +113,7 @@ class MedicoController extends Controller
         $medico->fill($request->all())->save();
         
 
-        return redirect()->route('medico.index',$paciente->id)
+        return redirect()->route('medico.index',$medico->id)
                 ->with('info','Ficha actualizada con exito');
     }
 

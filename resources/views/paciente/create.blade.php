@@ -2,7 +2,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-	<h1 align="center">Analisis</h1>
+	<h1 align="center">Pacientes</h1>
 @stop
 
 @section('content')
@@ -11,13 +11,13 @@
 	        <div class="col-md-8 col-md-offset-2">
 	            <div class="panel panel-default">
 	                <div class="panel-heading">
-	                    Crear Analisis
+	                    Registrar Paciente
 	                </div>
 
 	                <div class="panel-body">
-	                    {!! Form::open(['route' => 'analisis.store']) !!}
+	                    {!! Form::open(['route' => 'paciente.store']) !!}
 	                        
-	                        @include('analisis.partials.form')
+	                        @include('paciente.partials.form')
 
 	                    {!! Form::close() !!}
 	                </div>

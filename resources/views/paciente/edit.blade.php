@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-	<h1 align="center">Analisis</h1>
+	<h1 align="center">Pacientes</h1>
 @stop
 
 @section('content')
@@ -11,13 +11,13 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Editar Analisis
+                    Editar Registro Pacientes
                 </div>
 
                 <div class="panel-body">
-                    {!! Form::model($analisi, ['route' => ['analisis.update', $analisi->id], 'method' => 'PUT']) !!}
+                    {!! Form::model($paciente, ['route' => ['paciente.update', $paciente->id], 'method' => 'PUT']) !!}
                         
-                        @include('analisis.partials.form')
+                        @include('paciente.partials.form')
                         
                     {!! Form::close() !!}
 

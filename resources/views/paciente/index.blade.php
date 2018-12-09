@@ -2,7 +2,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-	<h1 align="center">Parametros de Analisis</h1>
+	<h1 align="center">Listado de Pacientes</h1>
 @stop
 
 @section('content')
@@ -16,7 +16,7 @@
 	        
 	          	<div class="box-tools pull-right" >
 	                
-	             	<a href="{{route('analisis.create')}}" class="btn btn-primary btn-sm" title="Crear nuevo parametro">Nuevo</a>
+	             	<a href="{{route('paciente.create')}}" class="btn btn-primary btn-sm" title="Crear nuevo parametro">Nuevo</a>
 	                
 	          	</div>
 	          	
@@ -26,55 +26,51 @@
               <table class="table table-striped table-hover">
               	<thead>
 	                <tr>
-	                  <th>ID</th>
-	                  <th>Clave</th>
+	                  <th>Id</th>
 	                  <th>Nombre</th>
-	                  <th>Area</th>
-	                  <th>Estado</th>
+	                  <th>Email</th>
+	                  <th>CI</th>
+										<th>Telefono</th>
+										
 	                  <th colspan="4">&nbsp;</th>
 	                </tr>
 	            </thead>
 	            <tbody>
-	            	@foreach($analisis as $analis)
-						<tr  role="row" class="odd" >
-							<td >{{ $analis->id }}</td>
-							
-							<td >{{ $analis->clave  }}</td>
+	            	@foreach($pacientes as $paciente)
+									<tr  role="row" class="odd" >
+										<td >{{ $paciente->id }}</td>
+										
+										<td >{{ $paciente->persona->user->name  }}</td>
+paciente
+										<td>{{ $paciente->persona->user->email }}</td>
 
-							<td>{{ $analis->nombre }}</td>
+										<td>{{ $paciente->persona->ci }}</td>
+										
+										<td>{{ $paciente->persona->telefono }}</td>
 
-							<td>{{ $analis->area->nombre }}</td>
-							
-							@if($analis->estado==1)
-								<td><span class="label label-success">Activo</span></td>
-							@else
-								<td><span class="label label-danger">Inactivo</span></td>
-							@endif
-							<td width="5px">
-								<a href="{{route('paranalisis.index',$analis->id)}}" 
-									class="btn btn-sm btn-primary" title="Parametrizar"><i class="fas fa-cog"></i> Parametrizar</a>
-							</td>
-							<td width="5px">
-								<a href="{{route('analisis.show',$analis->id)}}" 
-									class="btn btn-sm btn-success" title="Ver"><i class="fas fa-eye"></i></a>
-							</td>
-							
-							<td width="5px">
-								<a href="{{route('analisis.edit',$analis->id)}}" 
-									class="btn btn-sm btn-warning" title="Editar"><i class="fas fa-edit"></i></a>
-							</td>
-							<td width="5px">
-								 {!! Form::open(['route' => ['analisis.destroy', $analis->id], 'method' => 'DELETE']) !!}
-                                        <button class="btn btn-sm btn-danger" title="Borrar">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>                           
-                                 {!! Form::close() !!}
-							</td>
-						</tr>
-					@endforeach
+										
+									
+										<td width="5px">
+											<a href="{{route('paciente.show',$paciente->id)}}" 
+												class="btn btn-sm btn-success" title="Ver"><i class="fas fa-eye"></i></a>
+										</td>
+										
+										<td width="5px">
+											<a href="{{route('paciente.edit',$paciente->id)}}" 
+												class="btn btn-sm btn-warning" title="Editar"><i class="fas fa-edit"></i></a>
+										</td>
+										<td width="5px">
+											{!! Form::open(['route' => ['paciente.destroy', $paciente->id], 'method' => 'DELETE']) !!}
+																							<button class="btn btn-sm btn-danger" title="Borrar">
+																									<i class="fas fa-trash-alt"></i>
+																							</button>                           
+											{!! Form::close() !!}
+										</td>
+									</tr>
+									@endforeach
                 </tbody>
               </table>
-              {{$analisis->render()}}
+              {{$pacientes->render()}}
             </div>
             <!-- /.box-body -->
           </div>
