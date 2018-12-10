@@ -13,6 +13,10 @@ class OrdenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $ordenes = Orden::all();
@@ -37,6 +41,7 @@ class OrdenController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->only('nro_orden','fecha_ingreso','fecha_egreso','paciente_id','medico_id','empleado_id'));
         $orden = Orden::create($request->only('nro_orden','fecha_ingreso','fecha_egreso','paciente_id','medico_id','empleado_id'));
         $analisis = $request->input('analisis');
         foreach ($analisis as $value) {
