@@ -11,7 +11,7 @@ class AseguradoraSeguroSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Aseguradora::class,4)->create();
-        factory(App\Seguro::class,6)->create();
+        factory(App\Aseguradora::class,0)->create();
+        factory(App\Seguro::class,0)->create();
     }
 }

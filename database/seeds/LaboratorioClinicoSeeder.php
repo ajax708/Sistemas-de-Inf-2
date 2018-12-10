@@ -11,7 +11,7 @@ class LaboratorioClinicoSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\LaboratorioClinico::class, 5)->create()
+        factory(App\LaboratorioClinico::class, 0)->create()
         ->each(function($u) {
         	for ($i=0; $i < 3; $i++) {         		
    				$u->areas()->save(factory(App\Area::class)->make());

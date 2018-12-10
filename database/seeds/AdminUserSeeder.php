@@ -30,7 +30,7 @@ class AdminUserSeeder extends Seeder
          //                        'antiguedad' => date("dd/mm/yyyy"),
          //                        'estado' => '01'
          //                   ]);
-        factory(App\User::class,12)->create()
+        factory(App\User::class,0)->create()
             ->each(function($user){
                 $user->persona()->save(factory(App\Persona::class)->make());
         });

@@ -187,6 +187,18 @@ return [
     'menu' => [
         'CASOS DE USO',
         [
+            
+            'text'    => 'USUARIOS',
+            'icon'    => 'users',
+            'submenu' => [
+                [
+                    'text' => 'Listado Usuarios',
+                    'url'  => 'listado_usuarios',
+                    'icon'    => 'user',
+                ],
+            ],
+        ],
+        [
             'text'    => 'ANALISIS',
             'icon'    => 'vials',
             'submenu' => [
@@ -207,21 +219,19 @@ return [
                     'icon'    => 'list-ul',
                 ],
                 [
-                    'text' => 'Parametros de Muestras',
-                    
+                    'text' => 'Parametros de Muestras',         
                     'icon'    => 'list-ul',
                 ],
             ],
         ],
         [
-            
-            'text'    => 'USUARIOS',
-            'icon'    => 'users',
+            'text'    => 'REPORTES Y RESULTADOS',
+            'icon'    => 'file-alt',
             'submenu' => [
                 [
-                    'text' => 'Listado Usuarios',
-                    'url'  => 'listado_usuarios',
-                    'icon'    => 'user',
+                    'text' => 'Resultados de analisis',
+                    'route'  => 'resultado.show',
+                    'icon'    => 'flask',
                 ],
                 [
                     'text' => 'Registro Personal Medico',
@@ -240,6 +250,7 @@ return [
                 ],
             ],
         ],
+       
     ],
 
     /*

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
 Auth::routes();
@@ -83,4 +83,9 @@ Route::resource('orden', 'OrdenController')->parameters([
 Route::get('detalleorden/{orden}', 'DetalleOrdenController@index')->name('detalleorden.index');
 //Resultado
 Route::get('resultado/analisis/{id}', 'ResultadoController@getParametros')->name('resultado.getParametros');
+
+//reporte
+
+Route::get('resultado/pdf/{orden}', 'ResultadoController@pdf')->name('resultado.pdf');
+Route::get('resultadoshow', 'ResultadoController@show')->name('resultado.show');
 

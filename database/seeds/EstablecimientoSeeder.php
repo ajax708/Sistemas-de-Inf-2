@@ -11,7 +11,7 @@ class EstablecimientoSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Establecimiento::class,5)->create();
+        factory(App\Establecimiento::class,0)->create();
   			
    			App\Establecimiento::all()->each(function ($establecimiento){
    				$medicos = App\Medico::all()->random(rand(1, 3));

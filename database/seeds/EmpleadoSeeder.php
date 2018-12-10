@@ -11,7 +11,7 @@ class EmpleadoSeeder extends Seeder
      */
     public function run()
     {
-			factory(App\Empleado::class,3)->create();
+			factory(App\Empleado::class,0)->create();
   			
    			App\Empleado::all()->each(function ($empleado){
    				$areas = App\Area::all()->random(rand(1, 5));
