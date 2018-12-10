@@ -48,7 +48,8 @@ input[type=number]::-webkit-outer-spin-button {
 															class="btn  btn-success btn-xs" 
 															data-toggle="modal" 
 															data-target="#ResultadoModal" 
-															data-analisis={{ $analisis->id}}>
+															data-analisis="{{ $analisis->id}}"
+															data-orden="{{ $ordenId }}">
 															<i class="fas fa-plus"></i>
 														</button>	
 													</td>

@@ -196,6 +196,21 @@ return [
                     'url'  => 'listado_usuarios',
                     'icon'    => 'user',
                 ],
+                [
+                    'text' => 'Registro Personal Medico',
+                    'route'  => 'medico.index',
+                    'icon'    => 'user',
+                ],
+                [
+                    'text' => 'Registro Pacientes',
+                    'route'  => 'paciente.index',
+                    'icon'    => 'user',
+                ],
+                [
+                    'text' => 'Registro Empleados',
+                    'route'  => 'empleado.index',
+                    'icon'    => 'user',
+                ],
             ],
         ],
         [
@@ -233,21 +248,7 @@ return [
                     'route'  => 'resultado.show',
                     'icon'    => 'flask',
                 ],
-                [
-                    'text' => 'Registro Personal Medico',
-                    'route'  => 'medico.index',
-                    'icon'    => 'user',
-                ],
-                [
-                    'text' => 'Registro Pacientes',
-                    'route'  => 'paciente.index',
-                    'icon'    => 'user',
-                ],
-                [
-                    'text' => 'Registro Empleados',
-                    'route'  => 'empleado.index',
-                    'icon'    => 'user',
-                ],
+                
             ],
         ],
        

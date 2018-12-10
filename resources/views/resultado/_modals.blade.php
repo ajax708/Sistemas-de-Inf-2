@@ -11,6 +11,8 @@
               
               <form action="{{ route('resultado.store') }}" method="POST" class="form-inline" role="form">
                 @csrf
+                <input type="hidden" id="analisis" name="analisis">
+                <input type="hidden" id="orden" name="orden">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="panel panel-default">

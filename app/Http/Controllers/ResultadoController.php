@@ -11,10 +11,7 @@ use PDF;
 
 class ResultadoController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+ 
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +22,8 @@ class ResultadoController extends Controller
 
         $orden=Orden::find($orden);
         $analisisx=$orden->analisis;
-        return view('resultado.index',compact('analisisx'));   
+        $orden_id=$orden->id;
+        return view('resultado.index',compact('analisisx'))->with('ordenId','orden_id');   
 
     }
 
@@ -47,7 +45,7 @@ class ResultadoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all);
+        dd($request->all());
     }
 
     /**
@@ -101,7 +99,7 @@ class ResultadoController extends Controller
         $parametros=$analisis->parametros;
         return json_encode($parametros);
 
-
+    }
     public function pdf(Orden $orden){
         
         $pdf = PDF::loadView('resultado.pdf', ['orden'=>$orden]);
