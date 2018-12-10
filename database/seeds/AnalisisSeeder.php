@@ -11,7 +11,7 @@ class AnalisisSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Analisis::class,10)->create();
+        factory(App\Analisis::class,0)->create();
         App\UnidadMedida::create([
         	'nombre' => 'Litro',
         	'simbolo' => 'L',
