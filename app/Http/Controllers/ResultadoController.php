@@ -4,17 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Resultado;
 use Illuminate\Http\Request;
+use App\Analisis;
+use App\Orden;
 
 class ResultadoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($orden)
     {
-        //
+        $orden=Orden::find($orden);
+        $analisisx=$orden->analisis;
+        return view('resultado.index',compact('analisisx'));   
     }
 
     /**
@@ -35,7 +43,7 @@ class ResultadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all);
     }
 
     /**
@@ -81,5 +89,10 @@ class ResultadoController extends Controller
     public function destroy(Resultado $resultado)
     {
         //
+    }
+    public function getParametros($id){
+        $analisis=Analisis::find($id);
+        $parametros=$analisis->parametros;
+        return json_encode($parametros);
     }
 }

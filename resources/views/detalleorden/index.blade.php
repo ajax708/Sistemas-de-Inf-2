@@ -11,7 +11,10 @@
 <h1>Listado de Analisis</h1>
     @foreach ($orden->analisis as $analisis)
     	<h3>{{ $analisis->clave }}</h3>
-    	<p>{{$analisis->nombre}}</p>
+        <p>{{$analisis->nombre}}</p>
+        @foreach ($analisis->parametros as $item)
+            <p>{{$item->nombre}}</p>
+        @endforeach
     	<p>--------------------------</p>
     @endforeach
 @stop

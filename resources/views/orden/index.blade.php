@@ -35,7 +35,7 @@
     				 					<td>{{ $orden->fecha_ingreso }}</td>
     				 					<td>{{ $orden->fecha_egreso }}</td>
     				 					<td>{{ $orden->total }}</td>
-                                        <td><a href="{{ route('detalleorden.index',['orden' => $orden->id]) }}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Analisis</button></a></td>
+                                        <td><a href="{{ route('resultado.index',['orden' => $orden->id]) }}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Analisis</button></a></td>
     				 				</tr>
     				 		     @endforeach
     				 		</tbody>

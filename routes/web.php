@@ -50,9 +50,16 @@ Route::resources([
     'medico' => 'MedicoController',
     'paciente' => 'PacienteController',
     'empleado' => 'EmpleadoController',
+    
     //'posts' => 'PostController',
+
 ]);
 
+//parametro Resultado
+Route::get('resultado/{orden}', 'ResultadoController@index')->name('resultado.index');
+Route::resource('resultado', 'ResultadoController')->parameters([
+    'orden' => 'id'
+])->except(['index']);
 //parametro analisis
 Route::get('paranalisis/{analisis}', 'ParametroAnalisisController@index')->name('paranalisis.index');
 Route::resource('paranalisis', 'ParametroAnalisisController')->parameters([
@@ -74,4 +81,6 @@ Route::resource('orden', 'OrdenController')->parameters([
 'orden'=>'orden']);
 //detalle
 Route::get('detalleorden/{orden}', 'DetalleOrdenController@index')->name('detalleorden.index');
+//Resultado
+Route::get('resultado/analisis/{id}', 'ResultadoController@getParametros')->name('resultado.getParametros');
 
