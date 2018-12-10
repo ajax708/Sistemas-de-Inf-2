@@ -59,7 +59,7 @@ Route::resources([
 Route::get('resultado/{orden}', 'ResultadoController@index')->name('resultado.index');
 Route::resource('resultado', 'ResultadoController')->parameters([
     'orden' => 'id'
-])->except(['index']);
+])->except(['index','show']);
 //parametro analisis
 Route::get('paranalisis/{analisis}', 'ParametroAnalisisController@index')->name('paranalisis.index');
 Route::resource('paranalisis', 'ParametroAnalisisController')->parameters([
