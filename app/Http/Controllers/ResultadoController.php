@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Resultado;
+use App\Orden;
 use Illuminate\Http\Request;
+use PDF;
 
 class ResultadoController extends Controller
 {
@@ -14,7 +16,8 @@ class ResultadoController extends Controller
      */
     public function index()
     {
-        //
+        $ordenes = Orden::where('estado','Completo')->get();
+        return view('resultado.index')->with(['ordenes'=>$ordenes]);
     }
 
     /**
@@ -44,9 +47,9 @@ class ResultadoController extends Controller
      * @param  \App\Resultado  $resultado
      * @return \Illuminate\Http\Response
      */
-    public function show(Resultado $resultado)
+    public function show(Orden $orden)
     {
-        //
+        
     }
 
     /**
@@ -81,5 +84,13 @@ class ResultadoController extends Controller
     public function destroy(Resultado $resultado)
     {
         //
+    }
+
+    public function pdf(Orden $orden){
+        
+        $pdf = PDF::loadView('resultado.pdf', ['orden'=>$orden]);
+        $resultado = Resultado::where('orden_id',$orden->id)->where('parametros_analisis_id',2)->get()->first();
+        // dd($resultado->valor);
+        return $pdf->stream('resultado.pdf');
     }
 }
