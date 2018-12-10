@@ -73,7 +73,7 @@ Route::resource('orden', 'OrdenController')->parameters([
 Route::get('detalleorden/{orden}', 'DetalleOrdenController@index')->name('detalleorden.index');
 
 //reporte
-Route::get('resultado', 'ResultadoController@index')->name('resultado.index');
+
 Route::get('resultado/pdf/{orden}', 'ResultadoController@pdf')->name('resultado.pdf');
-Route::get('resultado/{orden}', 'ResultadoController@show')->name('resultado.show');
+Route::get('resultadoshow', 'ResultadoController@show')->name('resultado.show');
 

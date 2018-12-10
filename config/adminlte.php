@@ -230,7 +230,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Resultados de analisis',
-                    'route'  => 'resultado.index',
+                    'route'  => 'resultado.show',
                     'icon'    => 'flask',
                 ],
             ],
