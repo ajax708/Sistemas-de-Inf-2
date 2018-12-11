@@ -19,11 +19,12 @@ class ResultadoController extends Controller
      */
     public function index($orden)
     {
-
+        $resultado = Resultado::all();
         $orden=Orden::find($orden);
         $analisisx=$orden->analisis;
         $orden_id=$orden->id;
-        return view('resultado.index',compact('analisisx'))->with('ordenId','orden_id');   
+    
+        return view('resultado.index',compact('analisisx','resultado'))->with('ordenId',$orden_id);   
 
     }
 
@@ -45,9 +46,33 @@ class ResultadoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-    }
+        //dd($request->all());
+        $analisis_id = $request->input('analisis');
+        $orden_id = $request->input('orden');
+        $analisis = Analisis::find($analisis_id);
+        $parametros = $analisis->parametros;
+        //dd($parametros);
+        foreach ($parametros as $parametro) {
+            $param=$request->input('parametro_id_'.$parametro->id.'');
+            $val= $request->input('valor_'.$parametro->id.'');
+            $obs= $request->input('observacion_'.$parametro->id.'');
 
+            $resultado=Resultado::create(
+                [
+                    'analisis_id'=>$analisis_id,
+                    'orden_id'=>$orden_id,
+                    'parametros_analisis_id'=>$param,
+                    'valor'=>$val,
+                    'observaciones'=>$obs,
+                ]
+            );
+        }
+        $orden=Orden::find($orden_id);
+        $analisisx=$orden->analisis;
+        $resultado = Resultado::all();
+
+        return view('resultado.index',compact('analisisx','resultado'))->with('ordenId',$orden_id);   
+    }
     /**
      * Display the specified resource.
      *

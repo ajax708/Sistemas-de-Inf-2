@@ -98,4 +98,18 @@ class OrdenController extends Controller
     {
         //
     }
+    public function estado($id){
+        
+        $orden=Orden::find($id);
+        
+        if($orden->estado == 'Completo'){ 
+            $orden->estado="En Proceso";
+           
+        }else {
+            $orden->estado="Completo";
+        }
+        $orden->save();
+        $ordenes = Orden::all();
+        return view('orden.index',['ordenes'=>$ordenes]);
+    }
 }

@@ -1,10 +1,10 @@
-a = 0;
-function addCampo(ordenId,id,nombre){
-    a++;
+
+function addCampo(id,nombre){
+    
     var div = document.createElement('div');
     
         
-        div.innerHTML = '<div class="form-group"><input id="parametro_id_'+id+' "type="hidden" value="'+ id +'"><input id="orden_id"type="hidden" value="'+ ordenId +'"></input><label for="valor_'+id+'">'+nombre+'</label><input type="text" class="form-control" id="valor_'+id+'" name="valor_'+id+'" aria-describedby="valor" placeholder="Instrodusca Valor"></div>';
+        div.innerHTML = '<div class="form-group"><label for="valor_'+id+'">'+nombre+'</label><br><input type="text" class="form-control" id="valor_'+id+'" name="valor_'+id+'" aria-describedby="valor" placeholder="Instroduzca Valor" required="true" >=><input type="text" class="form-control input-lg" id="observacion_'+id+'" name="observacion_'+id+'" aria-describedby="valor" placeholder="Instroduzca Observacion" required="true" ><input id="parametro_id_'+id+'"  name="parametro_id_'+id+'" type="hidden" value="'+ id +'" ></div>';
         document.getElementById('resultado').appendChild(div);
         
     
@@ -21,14 +21,19 @@ $(document).ready(function (e) {
         console.log(analisis);
         console.log(ordenId);
         $.ajax({
-            url: 'analisis/'+analisis
-        }).done(function(parametros,ordenId){
+            type: "GET",
+            url: '/resultado/analisis/'+analisis,
+        }).done(function(parametros){
+            console.log(parametros);
             var jParametros = JSON.parse(parametros);
             eliminar();//Limpia el Formulario
             jParametros.forEach(function(param,index){
                 console.log(param);
-                addCampo(ordenId,param['id'],param['nombre']);
+                addCampo(param['id'],param['nombre']);
             });
+            var div = document.createElement('div');
+            div.innerHTML = '<input type="hidden" id="analisis" name="analisis" value="'+ analisis +'">';
+            document.getElementById('resultado').appendChild(div);
         }); 
     });
     

@@ -1,6 +1,14 @@
 
 @extends('adminlte::page')
-
+@section('css')
+<style >
+	input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+</style>
+@stop	
 @section('content_header')
 	<h1 align="center">Parametros - Resultados</h1>
 @stop
@@ -15,6 +23,9 @@ input[type=number]::-webkit-outer-spin-button {
 @stop	
 @section('content')
 	<div class="row">
+	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+		<a href="{{ route('orden.index') }}" class="btn btn-sm btn-primary"><i class="fas fa-arrow-circle-left"></i> Atras</a>
+	</div>
 	<div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
 		<div class="box box-primary">
 					<div class="box-header with-border">
@@ -42,7 +53,7 @@ input[type=number]::-webkit-outer-spin-button {
 													<td>{{$analisis->tipo}}</td>
 													<td>{{$analisis->area->nombre}}</td>
 													<td>
-														
+													@if(count($resultado->where('analisis_id',$analisis->id)->where('orden_id',$ordenId))==0)
 														<button 
 															type="button" 
 															class="btn  btn-success btn-xs" 
@@ -53,10 +64,7 @@ input[type=number]::-webkit-outer-spin-button {
 															<i class="fas fa-plus"></i>
 														</button>	
 													</td>
-													<td>
-														                          
-														{!! Form::close() !!}
-													</td>
+													@endif
 												</tr>
 									@endforeach
 								</tbody>
